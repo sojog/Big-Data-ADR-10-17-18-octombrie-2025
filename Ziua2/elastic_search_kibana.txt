@@ -1,0 +1,75 @@
+// CRUD - create read update delete
+// GET - citire
+// POST - scriere
+// PUT. - update
+// DELETE - stergere
+GET _cluster/health
+
+GET _cat/indices
+
+PUT indice_propriu
+
+GET _cat/indices
+
+DELETE indice_propriu
+
+GET _cat/indices
+
+PUT haine
+
+GET _cat/indices
+
+// pentru a crea un document cu id aleator
+POST haine/_doc
+{
+  "nume" : "De casa",
+  "pret" : 100
+}
+
+// pentru a crea un document cu ID specific
+POST haine/_doc/1
+{
+  "nume" : "De duminica",
+  "pret" : 200
+}
+
+// citire de documente din indecile respectiv
+GET haine/_search
+
+// salvare date cu layout diferit
+POST haine/_doc/2
+{
+  "nume" : "De duminica",
+  "pret" : 200,
+  "marime" : "M"
+}
+
+// citire de documente din indecile respectiv
+GET haine/_search
+
+// cautare in toti indexi
+GET _search
+{
+    "query" : {
+        "match_all": {}
+    }
+}
+
+// cautare intr-un singur indice
+GET haine/_search
+{
+    "query" : {
+         "match_all": {}
+    }
+}
+
+
+// cautare intr-un singur indice
+GET haine/_search
+{
+    "query" : {
+         "match": {
+            "pret" : 100
+         }
+    }
+}
